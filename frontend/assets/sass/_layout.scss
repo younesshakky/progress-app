@@ -1,0 +1,33 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+html{
+  font-size:10px;
+  font-family:'Open Sans', sans-serif; // any font family goes here
+}
+
+a{
+  text-decoration:none;
+}
+
+button{
+  background:#eee;
+  border:none;
+}
+
+body{
+  font-size: 1.4rem
+}
+
+.container{
+  width:1150px;
+  max-width: 100%;
+  padding: 0 15px;
+  margin:0 auto;
+}
+
+.clearfix{clear:both;}
+

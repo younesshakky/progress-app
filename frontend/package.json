@@ -1,0 +1,25 @@
+{
+  "name": "starter-kit",
+  "version": "1.0.1",
+  "description": "never mind",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo wanna test? ",
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/younesshakky/starter-kit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/younesshakky/starter-kit/issues"
+  },
+  "homepage": "https://github.com/younesshakky/starter-kit#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
