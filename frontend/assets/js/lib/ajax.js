@@ -17,7 +17,12 @@
     },
 
     _json: function (res) {
-      return JSON.parse(res);
+      try {
+        return JSON.parse(res)
+      } 
+      catch (err) {
+        return res;
+      }
     },
 
     // set single header
@@ -57,6 +62,12 @@
       return this;
     },
 
+    _setXFormHeader: function () {
+      this._setHeader('Content-Type', 'application/x-www-form-urlencoded');
+      return this;
+    },
+
+    
     // requset methods
 
     get: function (URI, callback) {
@@ -66,14 +77,9 @@
       this._joinUrl(URI)._send()._handleRequset(callback)
     },
 
-    setXFormHeader: function () {
-      this._setHeader('Content-Type', 'application/x-www-form-urlencoded');
-      return this;
-    },
-
     post: function (URI, data, callback) {
       this.method = 'post';
-      this._joinUrl(URI).setXFormHeader().send(data)._handleRequset(callback)
+      this._joinUrl(URI)._setXFormHeader()._send(data)._handleRequset(callback)
     }
 
   }
