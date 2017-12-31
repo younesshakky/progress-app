@@ -2,15 +2,16 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-
+const APIError = require('./helpers/APIError')
 const index = require('./routes/index.route');
 
 const app = express();
 
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/api', index);
 
 app.set('Access-Control-Allow-Origin', '*')
 
@@ -20,11 +21,9 @@ app.use(function (req, res, next) {
 })
 
 
-app.use('/api', index);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new APIError('Not Found', 404);
   err.status = 404;
   next(err);
 });
@@ -35,7 +34,6 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
   res.send(err)
 });
