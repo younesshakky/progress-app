@@ -2,10 +2,17 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose')
 const APIError = require('./helpers/APIError')
 const index = require('./routes/index.route');
 
 const app = express();
+
+var db = mongoose.createConnection('mongodb://localhost:27017/progress')
+
+db.once('open', function () {
+  console.log('##### connected to database #####')
+})
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
