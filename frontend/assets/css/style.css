@@ -407,6 +407,15 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 1.4rem;
+  background: #eaeff0;
+}
+
 a {
   text-decoration: none;
 }
@@ -416,9 +425,6 @@ button {
   border: none;
 }
 
-body {
-  font-size: 1.4rem;
-}
 
 .container {
   width: 1150px;
@@ -430,3 +436,14 @@ body {
 .clearfix {
   clear: both;
 }
+
+header {
+  padding: 20px 0;
+  margin-bottom: 1.3rem;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
