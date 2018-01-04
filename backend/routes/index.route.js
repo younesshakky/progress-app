@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const test = require('./test.route');
+const authRoute = require('./auth.route')
+const userRoute = require('./user.route')
 
-router.use('/test', test)
+router.use('/auth', authRoute)
+router.use('/user', userRoute)
 
 router.get('/', function(req, res, next) {
   res.send('welcome from API')

@@ -1,18 +1,10 @@
 const httpStatus = require('http-status');
 
-class ExpendableError extends Error {
+class APIError  {
   constructor(message, status) {
-    super(message, status)
     this.message = message;
-    this.code = httpStatus[status];
     this.status = status || 500;
-  }
-}
-
-
-class APIError extends ExpendableError {
-  constructor(message, status) {
-    super(message, status)
+    this.code = httpStatus[status].split(' ').join('_');
   }
 }
 

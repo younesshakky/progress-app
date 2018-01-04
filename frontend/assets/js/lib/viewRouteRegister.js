@@ -17,6 +17,14 @@ ViewRouteRegister.prototype = {
       console.log(viewObj)
       this.router.registredRoutes.push(viewObj)
     });
+  },
+
+  regView: function (className) {
+
+  },
+
+  regRoute: function (route) {
+
   }
 }
 

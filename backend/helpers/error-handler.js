@@ -6,10 +6,13 @@ module.exports = {
     return new APIError('not found', 404)
   },
   badCreds: function () {
-    return new APIError('not found', 401)    
+    return new APIError('bad credentials', 401)    
   },
   validationErr: function () {
-    return new APIError('not found', 400)    
+    return new APIError('silly data!', 400)    
+  },
+  noUser: function () {
+    return new APIError('no such user', 404)
   }
 
 

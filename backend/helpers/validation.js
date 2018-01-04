@@ -3,7 +3,10 @@ function isEmpty (param) {
   if (param === undefined) {
     return true;
   }
-  return param === ('' || null) || param.length <= 0  ? true : false;
+  return param === ('' || undefined || null) || param.length <= 0  ? true : false;
 }
 
-module.exports = {}
+
+module.exports = {
+  isEmpty
+}

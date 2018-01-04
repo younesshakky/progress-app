@@ -13,6 +13,7 @@ App.prototype.proxy = new AjaxInterface({
   endPoint: 'http://localhost:9000/api'
 })
 
+
 // App.prototype.registerView = new viewRouteRegister();
 
 var appModule = new App({
