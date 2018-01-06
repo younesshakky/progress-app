@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Goal = require('../models/goal.model')
 
 const userSchema = new mongoose.Schema({
   firstname : String,
@@ -7,7 +8,8 @@ const userSchema = new mongoose.Schema({
   email     : { type: String, required: true },
   password  : { type: String, required: true },
   isAdmin   : { type: Boolean, default: false },
-  goals     : Array // just for now
+  goals     : Array, // just for now
+  created   : {type: Date, default: Date.now()}
 })
 
 userSchema.statics = {
