@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user.model')
+const APIError = require('../helpers/APIError')
 const errHandler = require('../helpers/error-handler');
 const isEmpty = require('../helpers/validation').isEmpty
 
@@ -35,10 +36,16 @@ exports.login = function (req, res, next) {
 
 
 
-exports.verifyToken = function (req, res, next) {
-  const token = req.get('authorization')
-  jwt.verify(token, function (isToken) {
-    console.log(isToken)
+exports.requestedUser = function (req, res, next) {
+  const token = req.get('authorization') || null
+  if (!token) {
+    return next( new APIError('not connected yet', 400))
+  }
+  jwt.verify(token, 'verySecret', function (err, payload) {
+    if (err) {
+      return next( new APIError('not connected yet', 400))
+    }
+    req.userId = payload.id
+    next()
   })
-
 }

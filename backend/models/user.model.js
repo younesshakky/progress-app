@@ -10,5 +10,15 @@ const userSchema = new mongoose.Schema({
   goals     : Array // just for now
 })
 
+userSchema.statics = {
+  defaultInfo: [
+    'username',
+    'email',
+    'goals',
+    'firstname',
+    'lastname'
+  ]
+}
+
 
 module.exports = mongoose.model('users', userSchema)
