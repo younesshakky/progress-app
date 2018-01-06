@@ -10,7 +10,7 @@ App.prototype = {
 }
 
 App.prototype.proxy = new AjaxInterface({
-  endPoint: 'http://localhost:9000/api'
+  endPoint: 'http://localhost:9000/api/'
 })
 
 
@@ -31,3 +31,4 @@ appModule.registerView([
   ['/contact', 'contact'],
 ])
 */
+

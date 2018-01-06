@@ -412,8 +412,9 @@ html, body {
 }
 
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   background: #eaeff0;
+  color: #333
 }
 
 a {
@@ -433,6 +434,15 @@ button {
   margin: 0 auto;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.block {
+  display: block !important;
+  width: 100%;
+}
+
 .clearfix {
   clear: both;
 }
@@ -442,8 +452,79 @@ header {
   margin-bottom: 1.3rem;
 }
 
+.form-group {
+  margin-bottom: 2.8rem;
+}
+
+.form-label {
+  display: block;
+  color: #848484;
+  padding-bottom: 1.3rem;
+}
+
+.form-input {
+  display: block;
+  padding: 10px 15px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1.7rem;
+  color: #636363;
+  box-shadow: 0px 2px 17px -6px rgba(0, 0, 0, 0.28)
+}
+
+.form-input[type="password"] {
+  font-size: 2rem;
+  letter-spacing: 3px;
+}
+
+.btn {
+  background: #444;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.7rem;
+  padding: 10px 15px;
+}
+
+.btn.btn-primary {
+  background: #20c170
+}
+
+.link {
+  color: #20c170;
+}
+
+
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
+.form-view {
+  width: 700px;
+  max-width: 100%;
+  margin: 4rem auto;
+  padding: 0 15px;
+}
+
+/* form view (signup / signin) */
+
+.form-view .logo {
+  margin: 2rem 0;
+}
+
+.form-view .form-view-cta {
+  margin-top: 4rem
+}
+
+.form-view-cta h4 {
+  color: #8c8c8c
+}
+
+.form-view .form-fields {
+  margin-top: 7rem;
+  width: 500px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

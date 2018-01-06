@@ -17,14 +17,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/api', index);
-
 app.set('Access-Control-Allow-Origin', '*')
 
 app.use(function (req, res, next) {
   res.set('Access-Control-Allow-Origin', '*')
   next()
 })
+
+app.use('/api', index);
 
 
 // catch 404 and forward to error handler
