@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const APIError = require('./helpers/APIError')
 const index = require('./routes/index.route');
-
 const app = express();
 
 mongoose.connect('mongodb://localhost:27017/progress')
@@ -15,12 +14,16 @@ mongoose.connect('mongodb://localhost:27017/progress')
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json({ extended: false }));
+
 
 app.set('Access-Control-Allow-Origin', '*')
 
+app.set('Access-Control-Allow-Headers', 'Content-Type')
+
 app.use(function (req, res, next) {
   res.set('Access-Control-Allow-Origin', '*')
+  res.set('Access-Control-Allow-Headers', 'Content-Type')
   next()
 })
 

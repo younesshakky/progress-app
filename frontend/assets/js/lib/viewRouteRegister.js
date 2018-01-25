@@ -1,43 +1,42 @@
-function ViewRouteRegister (router) {
+function ViewRouteRegister(router) {
   this.router = router;
   this.router.registredRoutes = [];
-  
 }
 
 ViewRouteRegister.prototype = {
   // binds each route with it's view element
   bind: function (viewsArray) {
-    return viewsArray == undefined 
-    ? this 
-    : viewsArray.forEach(viewModel => {
-      let viewObj = {
-        route: viewModel[0],
-        viewElm: viewModel[1]
-      }
-      console.log(viewObj)
-      this.router.registredRoutes.push(viewObj)
-    });
+    if (isUndefined(viewsArray)) return false;
+
+    viewsArray.forEach(viewModel => {
+      let viewObj = this.extractObject(viewModel)
+      this.saveModel(viewObj)
+    })
   },
 
-  regView: function (className) {
 
+  saveModel: function (model) {
+    this.router.registredRoutes.push(model)
   },
 
-  regRoute: function (route) {
+  extractObject: function (viewModel) {
+    return {
+      route: viewModel[0],
+      viewElm: viewModel[1]
+    }
+  },
 
-  }
 }
 
-var router = new RouterModule()
-var registerView = new ViewRouteRegister(router);
+// var router = new RouterModule()
+// var registerView = new ViewRouteRegister(router);
 
+// registerView.bind([
+//   ['/', 'homepage'],
+//   ['/about', 'about'], 
+//   ['/contact', 'contact'],
+// ])
 
-registerView.bind([
-  ['/', 'homepage'],
-  ['/about', 'about'], 
-  ['/contact', 'contact'],
-])
-
-router.isRegistred('/about', function (route) {
-  console.log(route)
-})
+// router.isRegistred('/about', function (route) {
+//   console.log(route)
+// })

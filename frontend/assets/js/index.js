@@ -6,15 +6,20 @@ App.prototype = {
   setRootElm: function (element) {
     this.$el = document.querySelector(element)
     return this;
+  },
+
+  proxy: new AjaxInterface({
+    endPoint: 'http://localhost:9000/api'
+  }),
+
+  router: new RouterModule(),
+
+  registerView: function (viewsArr) {
+    var registrer = new ViewRouteRegister(this.router);
+    return registrer.bind(viewsArr)
   }
 }
 
-App.prototype.proxy = new AjaxInterface({
-  endPoint: 'http://localhost:9000/api/'
-})
-
-
-// App.prototype.registerView = new viewRouteRegister();
 
 var appModule = new App({
   el: '#app'

@@ -30,7 +30,6 @@
       catch (err) {
         return res;
       }
-      
     },
 
     // set single header
@@ -39,7 +38,7 @@
       return this;
     },
     
-    // recieves Object
+    // append headers to a request
     _appendHeaders: function (headers) {
       for (header in headers) {
         this.setHeader(header, headers[header])
@@ -59,22 +58,20 @@
       return this
     },
 
-    _handleRequset: function (callback) {
+    _handleRequset: function (cb) {
       this.xhr.onreadystatechange = () => {
         if (this.xhr.readyState === 4) {
-          callback(this._json(this.xhr.response))
+          callbackify(cb, this._json(this.xhr.response))
         }
       }
 
       return this;
     },
 
-    _handleError: function (callback) {
+    _handleError: function (cb) {
       this.xhr.onerror = () => {
         alert('something went very seriously wrong')
-        if (isFunction(callback)) {
-          callback()
-        }
+        callbackify(cb, null)
       }
 
       return this;
