@@ -29,11 +29,11 @@ appModule.proxy.get('/', function (res) {
   console.log(res)
 })
 
-/* 
+
 appModule.registerView([
   ['/', 'homepage'],
   ['/about', 'about'],
   ['/contact', 'contact'],
 ])
-*/
+
 

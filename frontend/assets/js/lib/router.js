@@ -1,8 +1,8 @@
 
 function RouterModule() {
   this.base = '#'
-  this.realCurrentRoute;
   this.registredRoutes = [];
+  this.views = []
 
   return this.init()
 }
@@ -12,6 +12,7 @@ RouterModule.prototype.init = function () {
   // this._locate()
   this.setupLink()
   this.handleClick()
+  this.currentRoute = location.hash;
   return this
 }
 
@@ -36,6 +37,7 @@ RouterModule.prototype.isRegistred = function (route, cb) {
 
 RouterModule.prototype._setRoute = function (route) {
   this.current = this.base + route
+  this.showView(route);
   return this
 }
 
@@ -60,6 +62,37 @@ RouterModule.prototype.setupLink = function () {
     item.href = item.dataset.link;
   })
 }
+
+RouterModule.prototype.showView = function (route) {
+  this.registredRoutes.filter(function (item) {
+    if (item.route !== route) return false;
+
+    var view = document.getElementById(item.viewElm)
+    this.hideView(this.getCurrentView())
+    view.classList.remove('hidden')
+  })
+}
+
+
+
+RouterModule.prototype.hideView = function (view) {
+  var view = document.getElementById(view)
+  if (view) {
+    view.classList.add('hidden')
+  }
+}
+
+RouterModule.prototype.getCurrentView = function () {
+  var route = this.currentRoute.replace('#', '')
+
+  for (item of this.registredRoutes) {
+    if (item.route == route) {
+      console.log(item.viewElm)
+      // return item.viewElm
+    }
+  }
+}
+
 
 
 
